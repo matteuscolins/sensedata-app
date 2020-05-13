@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>People - SenseData App</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>Gênero</th>
+            <th>Peso</th>
+            <th>Altura</th>
+        </thead>
+        <tbody>
+            {% for people in people %}
+            <tr>
+                <td>{{people.name}}</td>
+                <td>{{people.gender}}</td>
+                <td>{{people.mass}}</td>
+                <td>{{people.height}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</body>
+
+</html>
