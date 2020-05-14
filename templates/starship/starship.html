@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Starship - SenseData App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <h1 class="display-4">Starship - SenseData App</h1>
+        </nav>
+        <div class="table-responsive">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Descrição</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inutState">Filtrar por</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Filmes</option>
+                            <option>Naves</option>
+                            <option>Veículos</option>
+                            <option>Planetas</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputState">Filtrar por</label>
+                        <button class="form-control btn btn-primary">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+            {{ pagination.links }}
+            <table class="table table-hover">
+                <thead>
+                    <th><a href="./orderByName">Nome</a></th>
+                    <th><a href="./orderByGender">Model</a></th>
+                    <th><a href="./orderByGender">Score </a></th>
+                </thead>
+                <tbody>
+                    {% for starship in starship %}
+                    <tr>
+                        <td>{{starship.name}}</td>
+                        <td>{{starship.model}}</td>
+                        <td>{{starship.score}}</td>
+                    </tr>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {{ pagination.links }}
+    </div>
+</body>
+
+</html>
