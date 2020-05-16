@@ -14,6 +14,7 @@ def get_starship(offset=0, per_page=10):
 def home():
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')   
     total=len(starships)
+    starships.sort(key=lambda x: x.score, reverse=True)
     pagination_starship = get_starship(offset=offset, per_page=per_page)
     pagination = Pagination(page = page, per_page=per_page, total=total,
                             css_framework='bootstrap4')
@@ -31,32 +32,10 @@ def order_ny_name():
     return render_template('starship/starship.html', starship = pagination_starship, 
                     page = page, pagination=pagination, per_page=per_page)
 
-@bp.route('/orderByGender', methods=('GET', 'POST'))
+@bp.route('/orderByModel', methods=('GET', 'POST'))
 def order_by_gender():
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')   
-    starships.sort(key=lambda x: x.gender)
-    total=len(starships)
-    pagination_starship = get_starship(offset=offset, per_page=per_page)
-    pagination = Pagination(page=page, per_page=per_page, total=total,
-                            css_framework='bootstrap4')
-    return render_template('starship/starship.html', starship = pagination_starship, 
-                    page = page, pagination=pagination, per_page=per_page)
-
-@bp.route('/orderByMass', methods=('GET', 'POST'))
-def order_by_mass():
-    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')   
-    starships.sort(key=lambda x: x.mass)
-    total=len(starships)
-    pagination_starship = get_starship(offset=offset, per_page=per_page)
-    pagination = Pagination(page=page, per_page=per_page, total=total,
-                            css_framework='bootstrap4')
-    return render_template('starship/starship.html', starship = pagination_starship, 
-                    page = page, pagination=pagination, per_page=per_page)
-
-@bp.route('/orderByHeight', methods=('GET', 'POST'))
-def order_by_height():
-    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')   
-    starships.sort(key=lambda x: x.height)
+    starships.sort(key=lambda x: x.model)
     total=len(starships)
     pagination_starship = get_starship(offset=offset, per_page=per_page)
     pagination = Pagination(page=page, per_page=per_page, total=total,

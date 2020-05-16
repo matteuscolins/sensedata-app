@@ -63,9 +63,9 @@ class Starship():
                 edited = datas['results'][j]['edited']
                 url = datas['results'][j]['url']
                 if hyperdrive_rating != 'unknown' and cost_in_credits != 'unknown':
-                    score = float(float(hyperdrive_rating)/int(cost_in_credits))
+                    score = str(float(float(hyperdrive_rating)/int(cost_in_credits)))
                 else:
-                    score = 'n/a'
+                    score = '0.00'
 
                 startships.append(Starship(name, model, manufacturer, cost_in_credits, 
                     length, max_atmosphering_speed, crew, passengers, cargo_capacity, consumables,
