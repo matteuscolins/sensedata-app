@@ -3,6 +3,7 @@ from models.people import People
 from models.film import Film
 from models.vehicle import Vehicle
 from models.starship import Starship
+from models.planet import Planet
 from flask_paginate import Pagination, get_page_args
 from flask import (Blueprint, flash, g, redirect, render_template, request, session, url_for)
 
@@ -78,6 +79,8 @@ def filter():
         people_filtered = filter_by_vehicle(description)
     if type_filter == 'starship':
         people_filtered = filter_by_starship(description)
+    if type_filter == 'planet':
+        people_filtered = filter_by_planet(description)
     
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page') 
     total=len(people_filtered)
@@ -135,5 +138,33 @@ def filter_by_starship(description):
                 for k in range(len(people[j].starships)):
                     if people[j].starships[k] == starships_filtered[i].url:
                         people_filtered.append(people[j])
+
+    return people_filtered
+
+def filter_by_planet(description):
+    films = Film.get_all()
+    planets = Planet.get_all()
+    people = People.get_all()
+
+    planets_filtered = []
+    films_filtered = []
+    people_filtered = []
+
+    for i in range(len(planets)):
+        if description.lower() in planets[i].name.lower():
+            planets_filtered.append(planets[i])
+
+    if planets_filtered is not None:
+        for i in range(len(planets_filtered)):
+            for j in range(len(films)):
+                for k in range(len(films[j].planets)):
+                    if films[j].planets[k] == planets_filtered[i].url:
+                        films_filtered.append(films[j])
+
+    for i in range(len(films_filtered)):
+        for j in range(len(people)):
+            for k in range(len(people[j].films)):
+                if people[j].films[k] == films_filtered[i].url:
+                    people_filtered.append(people[j])
 
     return people_filtered

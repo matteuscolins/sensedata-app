@@ -24,24 +24,20 @@ class Planet():
         url = "https://swapi.dev/api/planets/"   
         r = requests.get(url = url)
         data = r.json()
-        if type(data['count']/10) is float:
-            count = int((data['count']/10) + 1)
-        elif type(data['count']/10) is int:
-            count = (data['count']/10)
-
-        for i in range(count):
+        count = (data['count']/10)
+        for i in range(int(count)):
             url = "https://swapi.dev/api/planets/?page="+str(i+1)   
             r = requests.get(url = url)
             datas = r.json()
             for j in range(len(datas['results'])):
                 name = datas['results'][j]['name']
-                rotation_period = datas['results'][j]['rotation_period'] 
-                orbital_period = datas['results'][j]['orbital_period'] 
-                diameter = datas['results'][j]['diameter'] 
+                rotation_period = datas['results'][j]['rotation_period']
+                orbital_period = datas['results'][j]['orbital_period']
+                diameter = datas['results'][j]['diameter']
                 climate = datas['results'][j]['climate']
                 gravity = datas['results'][j]['gravity']
                 terrain = datas['results'][j]['terrain']
-                surface_water = datas['results'][j]['surface_water'] 
+                surface_water = datas['results'][j]['surface_water']
                 population = datas['results'][j]['population']
                 residents = datas['results'][j]['residents']
                 films = datas['results'][j]['films']
