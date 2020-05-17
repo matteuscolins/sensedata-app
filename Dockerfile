@@ -1,11 +1,13 @@
 FROM python:3.6
 
-COPY . /app
+COPY ./requirements.txt /app/requirements.txt
 
 WORKDIR /app
 
 RUN pip3 install -r requirements.txt
 
-CMD ["flask", "run"]
+COPY . /app
 
-EXPOSE 5000
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]
