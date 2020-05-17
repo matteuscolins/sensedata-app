@@ -1,7 +1,5 @@
 import requests
-from operator import is_not
-from functools import partial
-from decimal import Decimal
+
 
 class Starship():
     def __init__(self, name, model, manufacturer, cost_in_credits, length, 

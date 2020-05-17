@@ -3,6 +3,7 @@ import requests
 from operator import is_not
 from functools import partial
 
+
 class People():
     def __init__(self, name, height, mass, hair_color, skin_color, 
                 eye_color, birth_year, gender, homeworld, films,

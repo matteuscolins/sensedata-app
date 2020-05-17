@@ -1,5 +1,6 @@
 import requests
 
+
 class Planet():
     def __init__(self, name, rotation_period, orbital_period, diameter, climate, gravity,
                 terrain, surface_water, population, residents, films, created, edited, url):
