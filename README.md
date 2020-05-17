@@ -21,3 +21,7 @@ pip install -r requirements.txt
 ```
 flask run
 ```
+### Execução com o Docker
+```
+docker-compose build && docker-compose up
+```
