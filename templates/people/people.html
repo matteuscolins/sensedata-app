@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>People - SenseData App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="display-4">People - SenseData App</h1>
+        <div class="table-responsive">
+            <form method="post" action="./filter">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDescription">Descrição</label>
+                        <input type="text" class="form-control" id="description" name="description">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inutState">Filtrar por</label>
+                        <select id="filter" class="form-control" name="filter">
+                            <option value="film" selected>Filmes</option>
+                            <option value="starship">Naves</option>
+                            <option value="vehicle">Veículos</option>
+                            <option value="planet">Planetas</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputState">Filtrar por</label>
+                        <button class="form-control btn btn-primary" type="submit">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+            {{ pagination.links }}
+            <table class="table table-hover">
+                <thead>
+                    <th><a href="./orderByName">Nome</a></th>
+                    <th><a href="./orderByGender">Gênero</a></th>
+                    <th><a href="./orderByMass">Peso</a></th>
+                    <th><a href="./orderByHeight">Altura</a></th>
+                </thead>
+                <tbody>
+                    {% for people in people %}
+                    <tr>
+                        <td>{{people.name}}</td>
+                        <td>{{people.gender}}</td>
+                        <td>{{people.mass}}</td>
+                        <td>{{people.height}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {{ pagination.links }}
+    </div>
+</body>
+
+</html>

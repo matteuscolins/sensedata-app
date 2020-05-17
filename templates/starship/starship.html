@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Starship - SenseData App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <h1 class="display-4">Starship - SenseData App</h1>
+        </nav>
+        <div class="table-responsive">
+            {{ pagination.links }}
+            <table class="table table-hover">
+                <thead>
+                    <th><a href="./orderByName">Nome</a></th>
+                    <th><a href="./orderByModel">Model</a></th>
+                    <th><a href="./">Score </a></th>
+                </thead>
+                <tbody>
+                    {% for starship in starship %}
+                    <tr>
+                        <td>{{starship.name}}</td>
+                        <td>{{starship.model}}</td>
+                        <td>{{starship.score}}</td>
+                    </tr>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {{ pagination.links }}
+    </div>
+</body>
+
+</html>
